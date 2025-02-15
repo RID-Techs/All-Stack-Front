@@ -1,0 +1,106 @@
+.signup-section-wrapper {
+    display: flex;
+    justify-content: center;
+}
+.signup-section {
+    border: 1px solid;
+    padding: 1em;
+    border-radius: 5px;
+}
+form {
+    margin-top: 1em;
+    display: grid;
+    place-items: start;
+}
+.signup-section input {
+    padding: 0.4em;
+    border-radius: 0.2em;
+}
+#signup-btn {
+    margin-top: 1em;
+    outline: none;
+    padding: 0.4em;
+    font-size: 1rem;
+    font-weight: bold;
+}
+.password-holder {
+    position: relative;
+}
+.password-holder span {
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin-right: 0.3em;
+    z-index: 100;
+}
+
+.loadingItems-holder {
+    height: 20px;
+    display: none;
+}
+.loadingItems {
+    display: inline-flex;
+}
+
+#loading-1 {
+    animation: bounce-1 0.2s ease-in-out alternate-reverse infinite;
+}
+@keyframes bounce-1 {
+    from {
+        color: red;
+        transform: translateY(0px);
+    } to {
+        color: green;
+        transform: translateY(-10px);
+    }
+}
+#loading-2 {
+    animation-delay: 1s;
+    animation: bounce-2 0.2s ease-in-out alternate infinite;
+}
+@keyframes bounce-2 {
+    from {
+        color: red;
+        transform: translateY(0px);
+    } to {
+        color: green;
+        transform: translateY(-9px);
+    }
+}
+#loading-3 {
+    animation-delay: 2s;
+    animation: bounce-3 0.2s ease-in-out alternate-reverse infinite;
+}
+@keyframes bounce-3 {
+    from {
+        color: red;
+        transform: translateY(5px);
+    } to {
+        color: green;
+    }
+}
+#loading-4 {
+    animation-delay: 3s;
+    animation: bounce-4 0.2s ease-in-out alternate-reverse infinite;
+}
+@keyframes bounce-4 {
+    from {
+        color: red;
+        transform: translateY(-10px);
+    } to {
+        color: green;
+    }
+}
+#loading-5 {
+    animation-delay: 4s;
+    animation: bounce-5 0.2s ease-in-out alternate-reverse infinite;
+}
+@keyframes bounce-5 {
+    from {
+        color: red;
+        transform: translateY(5px);
+    } to {
+        color: green;
+    }
+}
