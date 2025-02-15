@@ -16,10 +16,11 @@ function App() {
     {
       path: "/",
       loader: async () => {
+        const GetUrl = import.meta.env.VITE_Backend_URL
         try {
           const urls = [
-            "https://all-stack-back.onrender.com/api/products/getphones",
-            "https://all-stack-back.onrender.com/api/products/getcomputer"
+            `${GetUrl}/api/products/getphones`,
+            `${GetUrl}/api/products/getcomputer`
           ];
           const sendRequest = await Promise.all(urls.map((url) => fetch(url, {
             method: "GET",
@@ -69,9 +70,10 @@ function App() {
     {
       path: "/admin/product/modify/:id",
       loader: async ({params}) => {
-        const { id } = params
+        const { id } = params;
+        const GetUrl = import.meta.env.VITE_Backend_URL
         try {
-          const url = `https://all-stack-back.onrender.com/api/products/getphonebyid/${id}`
+          const url = `${GetUrl}/api/products/getphonebyid/${id}`
           const getIdRequest = await fetch(url)
           const response = await getIdRequest.json()
           console.log(response.PhoneId);
@@ -91,9 +93,10 @@ function App() {
     {
       path: "/admin/product/modify/computer/:id",
       loader: async ({params}) => {
-        const { id } = params
+        const { id } = params;
+        const GetUrl = import.meta.env.VITE_Backend_URL
         try {
-          const url = `https://all-stack-back.onrender.com/api/products/getcomputerbyid/${id}`
+          const url = `${GetUrl}/api/products/getcomputerbyid/${id}`
           const getIdRequest = await fetch(url)
           const response = await getIdRequest.json()
           console.log(response.ComputerId);
@@ -113,10 +116,11 @@ function App() {
     {
       path: "/admin",
       loader: async() => {
+        const GetUrl = import.meta.env.VITE_Backend_URL
         try {
           const urls = [
-            "https://all-stack-back.onrender.com/api/products/getphones",
-            "https://all-stack-back.onrender.com/api/products/getcomputer"
+            `${GetUrl}/api/products/getphones`,
+            `${GetUrl}/api/products/getcomputer`
             ];
           const sendRequest = await Promise.all(urls.map((url) => fetch(url, {
             method: "GET",

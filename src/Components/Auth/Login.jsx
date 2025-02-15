@@ -128,8 +128,9 @@ export function LogIn() {
         SignBtnText.textContent = "Proceeding"
         loadingItemsHolder.style.display = "inline-flex";
         const AuthenticateUser = async () => {
+            const GetUrl = import.meta.env.VITE_Backend_URL
             try {
-                const link = "https://all-stack-back.onrender.com/api/login";
+                const link = `${GetUrl}/api/login`;
                 const VerifyUserInfo = await fetch(link, {
                     method: "POST",
                     headers: {

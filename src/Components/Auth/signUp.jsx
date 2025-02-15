@@ -122,8 +122,9 @@ export function SignUp() {
         SignBtnText.textContent = "Proceeding"
         loadingItemsHolder.style.display = "inline-flex";
         const CreateNewUser = async () => {
+            const GetUrl = import.meta.env.VITE_Backend_URL
             try {
-                const link = "https://all-stack-back.onrender.com/api/signup";
+                const link = `${GetUrl}/api/signup`;
                 const sendUserInfo = await fetch(link, {
                     method: "POST",
                     headers: {

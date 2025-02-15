@@ -268,8 +268,9 @@ export function ModifyComputer() {
 
     const AddItemsToDB = async () => {
       setSubmitText(false);
+      const GetUrl = import.meta.env.VITE_Backend_URL
       try {
-        const url = `https://all-stack-back.onrender.com/api/products/updatecomputerbyid/${Data._id}`;
+        const url = `${GetUrl}/api/products/updatecomputerbyid/${Data._id}`;
         const SendItem = await fetch(url, {
           method: "PUT",
           credentials: "include",

@@ -238,6 +238,8 @@ export function Admin() {
         changeItemPictureRef.current.src = NewImage;
     }
 
+    const GetUrl = import.meta.env.VITE_Backend_URL;
+
     const AddNewProductPC = (e) => {
         e.preventDefault();
         const itemNameComputer = document.querySelector("#item-name-computer");
@@ -306,7 +308,7 @@ export function Admin() {
         const AddPcItemsToDB = async () => {
             setSubmitText(false);
             try {
-                const url = "https://all-stack-back.onrender.com/api/products/additem/computer"
+                const url = `${GetUrl}/api/products/additem/computer`
                 const SendItem = await fetch(url, {
                     method: "POST",
                     credentials: "include",
@@ -392,7 +394,7 @@ export function Admin() {
         const AddItemsToDB = async () => {
             setSubmitText(false);
             try {
-                const url = "https://all-stack-back.onrender.com/api/products/additem"
+                const url = `${GetUrl}/api/products/additem`
                 const SendItem = await fetch(url, {
                     method: "POST",
                     credentials: "include",
@@ -568,7 +570,7 @@ export function Admin() {
                     setDesktop(true);
                 }
                 try {
-                    const url = `https://all-stack-back.onrender.com/api/products/getqueriedcomputer?computerField=${getQuery}`
+                    const url = `${GetUrl}/api/products/getqueriedcomputer?computerField=${getQuery}`
                     const sendRequest = await fetch(url);
                     const response = await sendRequest.json();
                     const { FoundByQuery, msg } = response;
@@ -587,7 +589,7 @@ export function Admin() {
             }
             DisplayItemsByQuery();
         }
-    }, [searchParams]);
+    }, [searchParams, GetUrl]);
 
     useEffect(() => {
         const getQuery = searchParams.get("phoneRange");
@@ -609,7 +611,7 @@ export function Admin() {
                     setHighRange(true);
                 }
                 try {
-                    const url = `https://all-stack-back.onrender.com/api/products/getqueriedphones?phoneRange=${getQuery}`
+                    const url = `${GetUrl}/api/products/getqueriedphones?phoneRange=${getQuery}`
                     const sendRequest = await fetch(url);
                     const response = await sendRequest.json();
                     const { FoundByQuery, msg } = response;
@@ -628,7 +630,7 @@ export function Admin() {
             }
             DisplayItemsByQuery();
         }
-    }, [searchParams]);
+    }, [searchParams, GetUrl]);
 
     const handleDeleteSection = (e) => {
         const currentTg = e.currentTarget;
@@ -677,7 +679,7 @@ export function Admin() {
         
         const RemovingItem = async () => {
           try {
-              const url = `https://all-stack-back.onrender.com/api/products/deletephonebyid/${getAttrId}`;
+              const url = `${GetUrl}/api/products/deletephonebyid/${getAttrId}`;
             const SendItem = await fetch(url, {
               method: "DELETE",
               credentials: "include"
@@ -704,7 +706,7 @@ export function Admin() {
         
         const RemovingItemPC = async () => {
           try {
-              const url = `https://all-stack-back.onrender.com/api/products/deletecomputerbyid/${getAttrId}`;
+              const url = `${GetUrl}/api/products/deletecomputerbyid/${getAttrId}`;
             const SendItem = await fetch(url, {
               method: "DELETE",
               credentials: "include"

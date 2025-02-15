@@ -326,6 +326,8 @@ const light_theme_icon = <svg
         setProgramming(false);
     }
 
+    const GetUrl = import.meta.env.VITE_Backend_URL
+
     useEffect(() => {
         const getQuery = searchParams.get("computerField");
         if (getQuery === null) {
@@ -345,7 +347,7 @@ const light_theme_icon = <svg
                 }
                 try {
                     console.log("Search :", searchParams.get("computerField"));
-                    const url = `https://all-stack-back.onrender.com/api/products/getqueriedcomputer?computerField=${getQuery}`
+                    const url = `${GetUrl}/api/products/getqueriedcomputer?computerField=${getQuery}`
                     const sendRequest = await fetch(url);
                     const response = await sendRequest.json();
                     const { FoundByQuery, msg } = response;
@@ -364,7 +366,7 @@ const light_theme_icon = <svg
             }
             DisplayItemsByQuery();
         }
-    }, [searchParams]);
+    }, [searchParams, GetUrl]);
 
     useEffect(() => {
         const getQuery = searchParams.get("phoneRange");
@@ -387,7 +389,7 @@ const light_theme_icon = <svg
                 }
                 try {
                     console.log("Search :", searchParams.get("phoneRange"));
-                    const url = `https://all-stack-back.onrender.com/api/products/getqueriedphones?phoneRange=${getQuery}`
+                    const url = `${GetUrl}/api/products/getqueriedphones?phoneRange=${getQuery}`
                     const sendRequest = await fetch(url);
                     const response = await sendRequest.json();
                     const { FoundByQuery, msg } = response;
@@ -406,7 +408,7 @@ const light_theme_icon = <svg
             }
             DisplayItemsByQuery();
         }
-    }, [searchParams]);
+    }, [searchParams, GetUrl]);
 
 
     return (
