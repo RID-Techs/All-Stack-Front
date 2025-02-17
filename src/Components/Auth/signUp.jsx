@@ -122,7 +122,7 @@ export function SignUp() {
         SignBtnText.textContent = "Proceeding"
         loadingItemsHolder.style.display = "inline-flex";
         const CreateNewUser = async () => {
-            const GetUrl = import.meta.env.VITE_Backend_URL
+            const GetUrl = import.meta.env.MODE === "production" ? import.meta.env.VITE_Prod_Backend_URL : import.meta.env.VITE_Local_Backend_URL;
             try {
                 const link = `${GetUrl}/api/signup`;
                 const sendUserInfo = await fetch(link, {

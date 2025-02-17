@@ -128,7 +128,7 @@ export function LogIn() {
         SignBtnText.textContent = "Proceeding"
         loadingItemsHolder.style.display = "inline-flex";
         const AuthenticateUser = async () => {
-            const GetUrl = import.meta.env.VITE_Backend_URL
+            const GetUrl = import.meta.env.MODE === "production" ? import.meta.env.VITE_Prod_Backend_URL : import.meta.env.VITE_Local_Backend_URL;
             try {
                 const link = `${GetUrl}/api/login`;
                 const VerifyUserInfo = await fetch(link, {
@@ -160,6 +160,8 @@ export function LogIn() {
                     navigate("/admin");
                 }
             } catch (error) {
+                SignBtnText.textContent = "Login";
+                loadingItemsHolder.style.display = "none";
                 console.log("Error while authenticating the user : " + error);
                 
             }

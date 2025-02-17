@@ -182,7 +182,7 @@ export function Admin() {
         setOpenAddItemSection(!openAddItemSection);
         setCloseBtn(true);
     }
-
+    const GetUrl = import.meta.env.MODE === "production" ? import.meta.env.VITE_Prod_Backend_URL : import.meta.env.VITE_Local_Backend_URL;
     const HeaderItemsRef = useRef(null);
 
     useEffect(() => {
@@ -237,8 +237,6 @@ export function Admin() {
         changeItemPictureRef.current.style.display = "block";
         changeItemPictureRef.current.src = NewImage;
     }
-
-    const GetUrl = import.meta.env.VITE_Backend_URL;
 
     const AddNewProductPC = (e) => {
         e.preventDefault();

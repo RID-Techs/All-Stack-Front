@@ -326,7 +326,7 @@ const light_theme_icon = <svg
         setProgramming(false);
     }
 
-    const GetUrl = import.meta.env.VITE_Backend_URL
+    const GetUrl = import.meta.env.MODE === "production" ? import.meta.env.VITE_Prod_Backend_URL : import.meta.env.VITE_Local_Backend_URL;
 
     useEffect(() => {
         const getQuery = searchParams.get("computerField");
@@ -346,7 +346,6 @@ const light_theme_icon = <svg
                     setDesktop(true);
                 }
                 try {
-                    console.log("Search :", searchParams.get("computerField"));
                     const url = `${GetUrl}/api/products/getqueriedcomputer?computerField=${getQuery}`
                     const sendRequest = await fetch(url);
                     const response = await sendRequest.json();
@@ -388,7 +387,6 @@ const light_theme_icon = <svg
                     setHighRange(true);
                 }
                 try {
-                    console.log("Search :", searchParams.get("phoneRange"));
                     const url = `${GetUrl}/api/products/getqueriedphones?phoneRange=${getQuery}`
                     const sendRequest = await fetch(url);
                     const response = await sendRequest.json();

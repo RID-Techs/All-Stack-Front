@@ -253,7 +253,7 @@ const [productName, setProductname] = useState(Data.productName);
 
     const AddItemsToDB = async () => {
       setSubmitText(false);
-      const GetUrl = import.meta.env.VITE_Backend_URL
+      const GetUrl = import.meta.env.MODE === "production" ? import.meta.env.VITE_Prod_Backend_URL : import.meta.env.VITE_Local_Backend_URL;
       try {
         const url = `${GetUrl}/api/products/updatephonebyid/${Data._id}`;
         const SendItem = await fetch(url, {

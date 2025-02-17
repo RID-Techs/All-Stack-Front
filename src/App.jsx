@@ -12,11 +12,11 @@ import { Modify } from './Components/Admin/Modify';
 import { ModifyComputer } from './Components/Admin/ModifyComp';
 
 function App() {
+  const GetUrl = import.meta.env.MODE === "production" ? import.meta.env.VITE_Prod_Backend_URL : import.meta.env.VITE_Local_Backend_URL;
   const router = createBrowserRouter([
     {
       path: "/",
       loader: async () => {
-        const GetUrl = import.meta.env.VITE_Backend_URL
         try {
           const urls = [
             `${GetUrl}/api/products/getphones`,
@@ -71,12 +71,10 @@ function App() {
       path: "/admin/product/modify/:id",
       loader: async ({params}) => {
         const { id } = params;
-        const GetUrl = import.meta.env.VITE_Backend_URL
         try {
           const url = `${GetUrl}/api/products/getphonebyid/${id}`
           const getIdRequest = await fetch(url)
           const response = await getIdRequest.json()
-          console.log(response.PhoneId);
           return response.PhoneId
         } catch (error) {
           console.log("Modify Selection", error);
@@ -94,12 +92,10 @@ function App() {
       path: "/admin/product/modify/computer/:id",
       loader: async ({params}) => {
         const { id } = params;
-        const GetUrl = import.meta.env.VITE_Backend_URL
         try {
           const url = `${GetUrl}/api/products/getcomputerbyid/${id}`
           const getIdRequest = await fetch(url)
           const response = await getIdRequest.json()
-          console.log(response.ComputerId);
           return response.ComputerId
         } catch (error) {
           console.log("Modify Selection", error);
@@ -116,7 +112,6 @@ function App() {
     {
       path: "/admin",
       loader: async() => {
-        const GetUrl = import.meta.env.VITE_Backend_URL
         try {
           const urls = [
             `${GetUrl}/api/products/getphones`,
